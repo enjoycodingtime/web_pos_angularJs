@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div class="navbar navbar-inverse">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Let's Go</a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li ><a href="#">Home</a></li>
+                <li><a href="#about">商品列表</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active" ng-click="shopping_cart()"><a ><span class="glyphicon glyphicon-shopping-cart" ></span>购物车({{num}})</a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</div>
+<div id="payment_page">
+        <div id="time"></div>
+        <h1>购物清单</h1>
+        <table class="table table-bordered">
+            <tr>
+                <td>分类</td>
+                <td>名称</td>
+                <td>单价（元）</td>
+                <td>单位</td>
+                <td>数量</td>
+                <td>小计</td>
+                <td></td>
+            </tr>
+            <tr ng-repeat="list in lists">
+                <td>{{list.sort}}</td>
+                <td>{{list.name}}</td>
+                <td>{{list.price}}</td>
+                <td>{{list.unit}}</td>
+                <td>{{list.num}}</td>
+                <td><span ng-show='{{list.num >=3 &&check_cut(list.barcode)}}' class="ng-hide">{{(list.num-filters(list.num/3 ))*(list.price)}}(原价：{{(list.num)*(list.price)}})</span><span  ng-show='{{list.num <3||!check_cut(list.barcode)}}'class="ng-hide">{{(list.num)*(list.price)}}</span></td>
+            </tr>
+        </table>
+        <h1>赠送商品</h1>
+        <table class="table table-bordered">
+            <tr>
+                <td>分类</td>
+                <td>名称</td>
+                <td>数量</td>
+                <td></td>
+            </tr>
+             <tr ng-repeat="list in cut">
+                <td>{{list.sort}}</td>
+                <td>{{list.name}}</td>
+                <td>{{filters(list.num/3)}}</td>
+                </tr>
+        </table>
+        <p></p>
+        <div style="text-align: right" >总计:{{count}}</div>
+        <div style="text-align: right" >节省:{{cuts}}</div>
+        <div style="text-align: right">
+            <button type="button" class="btn btn-info" ng-click='confirm()'>确认</button>
+        </div>
+    </div>
+</body>
+</html>
