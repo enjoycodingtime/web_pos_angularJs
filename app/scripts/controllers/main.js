@@ -2,6 +2,7 @@
 
 angular.module('webPosAnjsApp')
   .controller('MainCtrl', function ($scope,$location) {
+     $scope.num = shopping_cart_num();
     $scope.product = function(){
     	 $location.path('/product');
     };
