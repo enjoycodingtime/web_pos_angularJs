@@ -22,7 +22,7 @@
     </div>
 </div>
 <div id="payment_page">
-        <div id="time"></div>
+        <div >{{time}}</div>
         <h1>购物清单</h1>
         <table class="table table-bordered">
             <tr>
@@ -32,7 +32,6 @@
                 <td>单位</td>
                 <td>数量</td>
                 <td>小计</td>
-                <td></td>
             </tr>
             <tr ng-repeat="list in lists">
                 <td>{{list.sort}}</td>
@@ -49,7 +48,6 @@
                 <td>分类</td>
                 <td>名称</td>
                 <td>数量</td>
-                <td></td>
             </tr>
              <tr ng-repeat="list in cut">
                 <td>{{list.sort}}</td>

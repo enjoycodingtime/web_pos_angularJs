@@ -6,6 +6,7 @@ angular.module('webPosAnjsApp')
         $scope.count = counted();
         $scope.cuts = cuted()-counted();
         $scope.cut = cut();
+        $scope.time = new Time().get_time();
         $scope.product = function(){
             $location.path('/product');
         };
